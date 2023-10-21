@@ -58,11 +58,11 @@ class DiffPluginFunctionalTest {
     )
 
     // Run the build
-    val runner = GradleRunner.create()
-    runner.forwardOutput()
-    runner.withPluginClasspath()
-    runner.withArguments("diff")
-    runner.withProjectDir(projectDir)
-    return runner.build()
+    return GradleRunner.create()
+      .forwardOutput()
+      .withPluginClasspath()
+      .withArguments("diff")
+      .withProjectDir(projectDir)
+      .build()
   }
 }

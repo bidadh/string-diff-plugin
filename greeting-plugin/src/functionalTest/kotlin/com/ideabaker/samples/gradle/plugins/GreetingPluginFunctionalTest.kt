@@ -30,12 +30,12 @@ class GreetingPluginFunctionalTest {
     )
 
     // Run the build
-    val runner = GradleRunner.create()
-    runner.forwardOutput()
-    runner.withPluginClasspath()
-    runner.withArguments("greeting")
-    runner.withProjectDir(projectDir)
-    val result = runner.build()
+    val result = GradleRunner.create()
+      .forwardOutput()
+      .withPluginClasspath()
+      .withArguments("greeting")
+      .withProjectDir(projectDir)
+      .build()
 
     // Verify the result
     assertTrue(result.output.contains("Hello from plugin 'com.ideabaker.samples.gradle.plugin.greeting'"))
