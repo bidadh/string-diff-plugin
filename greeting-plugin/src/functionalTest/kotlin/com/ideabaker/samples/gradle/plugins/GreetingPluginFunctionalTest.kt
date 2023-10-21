@@ -1,4 +1,4 @@
-package com.ideabaker.samples.gradle.plugin
+package com.ideabaker.samples.gradle.plugins
 
 import org.gradle.testkit.runner.GradleRunner
 import org.junit.jupiter.api.io.TempDir
@@ -9,7 +9,7 @@ import kotlin.test.assertTrue
 /**
  * A simple functional test for the 'com.ideabaker.samples.gradle.plugin.greeting' plugin.
  */
-class StringDiffPluginFunctionalTest {
+class GreetingPluginFunctionalTest {
 
   @field:TempDir
   lateinit var projectDir: File
@@ -24,7 +24,7 @@ class StringDiffPluginFunctionalTest {
     buildFile.writeText(
       """
             plugins {
-                id("com.ideabaker.samples.gradle.plugin.greeting")
+                id("com.ideabaker.samples.gradle.plugins.greeting-plugin")
             }
         """.trimIndent()
     )

@@ -5,19 +5,22 @@ plugins {
   kotlin("jvm") version "1.9.0"
 }
 
+group = "com.ideabaker.samples.gradle.plugins"
+version = "0.0.1"
+
 publishing {
-  publications {
-    create<MavenPublication>("maven") {
-      groupId = "com.ideabaker.samples.gradle.plugin"
-      artifactId = "string-diff-plugin"
-      version = "0.0.1"
-      from(components["java"])
+  repositories {
+    mavenLocal()
+    maven {
+      name = "github"
+      url = uri("https://maven.pkg.github.com/bidadh/string-diff-plugin")
+      credentials {
+        username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR") ?: "bidadh"
+        password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+      }
     }
   }
 }
-
-group = "com.raysaz.gradle.plugins"
-version = "0.0.1"
 
 repositories {
   mavenCentral()
@@ -29,10 +32,9 @@ dependencies {
 }
 
 gradlePlugin {
-  // Define the plugin
   val greeting by plugins.creating {
-    id = "com.ideabaker.samples.gradle.plugin.greeting"
-    implementationClass = "com.ideabaker.samples.gradle.plugin.StringDiffPlugin"
+    id = "$group.greeting-plugin"
+    implementationClass = "$group.GreetingPlugin"
   }
 }
 

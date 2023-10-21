@@ -1,4 +1,4 @@
-package com.ideabaker.samples.gradle.plugin
+package com.ideabaker.samples.gradle.plugins
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -6,7 +6,8 @@ import org.gradle.api.Project
 /**
  * A simple 'hello world' plugin.
  */
-class StringDiffPlugin : Plugin<Project> {
+@Suppress("unused")
+class GreetingPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     project.tasks.register("greeting") {
       this.doLast {
