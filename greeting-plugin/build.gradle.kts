@@ -29,6 +29,7 @@ repositories {
 dependencies {
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+  testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
 }
 
 gradlePlugin {
@@ -49,6 +50,7 @@ val functionalTestSourceSet: SourceSet = sourceSets.create("functionalTest") {
 
 configurations["functionalTestImplementation"].extendsFrom(configurations["testImplementation"])
 configurations["functionalTestRuntimeOnly"].extendsFrom(configurations["testRuntimeOnly"])
+configurations["functionalTestCompileOnly"].extendsFrom(configurations["testCompileOnly"])
 
 // Add a task to run the functional tests
 val functionalTest by tasks.registering(Test::class) {
