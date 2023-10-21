@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.ideabaker.samples.gradle.plugins"
-version = "0.0.1"
+version = "0.0.3"
 
 publishing {
   repositories {
@@ -35,6 +35,11 @@ gradlePlugin {
   val greeting by plugins.creating {
     id = "$group.greeting-plugin"
     implementationClass = "$group.GreetingPlugin"
+  }
+
+  val diff by plugins.creating {
+    id = "$group.diff-plugin"
+    implementationClass = "$group.diff.DiffPlugin"
   }
 }
 
