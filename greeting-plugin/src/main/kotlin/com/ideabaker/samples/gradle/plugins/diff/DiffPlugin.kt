@@ -16,6 +16,8 @@ class DiffPlugin: Plugin<Project> {
     val extension = project.extensions.create<DiffPluginExtension>("diffConfig")
   
     project.tasks.register<DiffTask>("diff") {
+      group = "ideabaker-samples"
+
       string1.set(extension.string1)
       string2.set(extension.string2)
     }

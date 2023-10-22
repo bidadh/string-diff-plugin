@@ -10,6 +10,8 @@ import org.gradle.api.Project
 class GreetingPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     project.tasks.register("greeting") {
+      group = "ideabaker-samples"
+
       this.doLast {
         println("Hello from plugin 'com.ideabaker.samples.gradle.plugin.greeting'")
       }
